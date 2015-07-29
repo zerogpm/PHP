@@ -10,7 +10,7 @@
 //echo $now = date_format($date, 'Y-m-d H:i:s')."<br/>";
 
 $timeStamp = time();
-echo $now = strftime("The date today is %m/%d/%y", $timeStamp);
+echo $now = strftime("The date today is %m/%d/%y", $timeStamp) . "<br/>";
 
 function strip_zeros_from_date($marked_string="") {
     //remove the marked zeros
@@ -19,3 +19,8 @@ function strip_zeros_from_date($marked_string="") {
 }
 
 echo strip_zeros_from_date($now);
+
+echo "<hr/>";
+
+$dateTime = time();
+echo $mysql_datetime = strftime("%Y-%m-%d %H:%M:%S", $dateTime);
