@@ -1,31 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Jian Su
- * Date: 7/29/2015
- * Time: 7:59 AM
- */
 
-class Form {
-    protected  $elements = [];
-    protected $name;
-    public $valid = false;
 
-    public function getStartTag($attributes = null) {
-        if(!$attributes) return '<form>';
-        $tag = '<form';
-        foreach($attributes as $key => $value) {
-            $tag .= " $key=\"$value\"";
-        }
-        $tag .= '>';
-        return $tag;
-    }
 
-    public function getEndTag() {
-        return '</form>';
-    }
+$people = array(
+    ["Name" => "Chris"],
+    ["Name" => "Ada"]
+);
 
+var_dump($people);
+
+array_multisort($people, SORT_ASC,SORT_STRING);
+
+
+
+$sorted = [];
+for($i = 0; $i < count($people); $i++) {
+    $sorted[$i] = $people[$i];
 }
 
-
-
+var_dump($sorted);
