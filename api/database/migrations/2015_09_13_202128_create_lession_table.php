@@ -17,7 +17,7 @@ class CreateLessionTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->boolean('confirmed');
-            $table->timestamp('Added_on');
+            $table->timestamps();
         });
     }
 

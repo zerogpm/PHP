@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\CreateLessonRequest;
 use App\Http\Controllers\Controller;
 use App\lesson;
 
@@ -47,9 +48,11 @@ class LessonController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateLessonRequest $request)
     {
-        //
+        $values = $request->only(['title', 'body','confirmed']);
+        lesson::create($values);
+        return response()->json(['message' => 'Added Recored'],201);
     }
 
     /**
@@ -118,7 +121,8 @@ class LessonController extends Controller
                'title' => $lesson['title'],
                'body'  => $lesson['body'],
                'confirmed' => (boolean)$lesson['confirmed'],
-               'Added_on' => $lesson['Added_on']
+               'created_at' => $lesson['created_at'],
+               'updated_at' => $lesson['updated_at']
            ];
     }
 

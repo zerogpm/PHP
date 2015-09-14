@@ -21,8 +21,8 @@ class LessonTableSeeder extends Seeder
             DB::table('lesson')->insert([
                 'title' => $faker->sentence(5),
                 'body' => $faker->paragraph(4),
-                'confirmed' => $faker->boolean(),
-                'Added_on'  => $faker->dateTime($max = 'now')
+                'confirmed' => $faker->boolean()
+                //'Added_on'  => $faker->dateTime($max = 'now')
             ]);
         }
 
