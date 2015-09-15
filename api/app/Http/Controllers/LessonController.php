@@ -69,7 +69,7 @@ class LessonController extends Controller
             return response()->json([
                'error' => [
                    'message' => 'Lesson does not exist',
-                   'code'    => '195',
+                   'code'    => '404',
                    'urlError' => 'chrissu.design'
                ]
             ], 404);
