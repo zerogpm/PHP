@@ -129,7 +129,19 @@ class LessonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lessons = lesson::find($id);
+        if(! $lessons) {
+            return response()->json([
+                'error' => [
+                    'message' => 'Lesson does not exist',
+                    'code'    => '404',
+                    'urlError' => 'chrissu.design'
+                ]
+            ], 404);
+        }
+
+        $lessons->delete();
+        return response()->json(['message' => 'Recore has been deleted!'],201);
     }
 
     private function transform($lesson)
