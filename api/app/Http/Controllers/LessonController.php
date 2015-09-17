@@ -67,11 +67,11 @@ class LessonController extends Controller
 
         if(! $lessons) {
             return response()->json([
-               'error' => [
-                   'message' => 'Lesson does not exist',
-                   'code'    => '404',
-                   'urlError' => 'chrissu.design'
-               ]
+                'error' => [
+                    'message' => 'Lesson does not exist',
+                    'code'    => '404',
+                    'urlError' => 'chrissu.design'
+                ]
             ], 404);
 
         }
@@ -99,9 +99,26 @@ class LessonController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateLessonRequest $request, $id)
     {
-        //
+        $lessons = lesson::find($id);
+        if(! $lessons) {
+            return response()->json([
+                'error' => [
+                    'message' => 'Lesson does not exist',
+                    'code'    => '404',
+                    'urlError' => 'chrissu.design'
+                ]
+            ], 404);
+        }
+        $title = $request->get('title');
+        $body  = $request->get('body');
+        $confirmed = $request->get('confirmed');
+        $lessons->title = $title;
+        $lessons->body = $body;
+        $lessons->confirmed = $confirmed;
+        $lessons->save();
+        return response()->json(['message' => 'Recore has been updated!'],201);
     }
 
     /**
@@ -117,13 +134,13 @@ class LessonController extends Controller
 
     private function transform($lesson)
     {
-           return [
-               'title' => $lesson['title'],
-               'body'  => $lesson['body'],
-               'confirmed' => (boolean)$lesson['confirmed'],
-               'created_at' => $lesson['created_at'],
-               'updated_at' => $lesson['updated_at']
-           ];
+        return [
+            'title' => $lesson['title'],
+            'body'  => $lesson['body'],
+            'confirmed' => (boolean)$lesson['confirmed'],
+            'created_at' => $lesson['created_at'],
+            'updated_at' => $lesson['updated_at']
+        ];
     }
 
     private function transformCollection($lessons)
