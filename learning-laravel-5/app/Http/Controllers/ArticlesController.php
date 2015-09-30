@@ -19,4 +19,8 @@ class ArticlesController extends Controller
 
         return view('articles.show',compact('articles'));
     }
+
+    public function create() {
+        return view('articles.create');
+    }
 }
