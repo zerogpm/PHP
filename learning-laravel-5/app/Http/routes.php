@@ -20,3 +20,4 @@ Route::get('about', 'PagesController@about');
 Route::get('contact', 'PagesController@contact');
 
 Route::get('article', 'ArticlesController@index');
+Route::get('article/{id}', 'ArticlesController@show');
