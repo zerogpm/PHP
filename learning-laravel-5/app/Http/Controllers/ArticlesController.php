@@ -15,7 +15,18 @@ class ArticlesController extends Controller
         //$articles = Article::all();
 
         /** Fetch the end of record, Order by Des order*/
-        $articles = Article::latest('published_at')->get();
+        //$articles = Article::latest('published_at')->get();
+
+        /**
+         * limit the record using Where
+         */
+        //$articles = Article::latest('published_at')->where('published_at', '<=', Carbon::now())->get();
+
+        /**
+         * using Query Scope to write query
+         * The Query Scope function will be on Article Model
+         */
+        $articles = Article::latest('published_at')->published()->get();
 
         return view('articles.index', compact('articles'));
     }
@@ -34,7 +45,6 @@ class ArticlesController extends Controller
 
         //Request only one input values
         //$input = Request::get('title');
-        $input = Request::all();
 
         /**
          * This is one by one Assingment
@@ -44,8 +54,7 @@ class ArticlesController extends Controller
         **/
 
         /** This is mass assignment */
-        $input['published_at'] = Carbon::now();
-        Article::create($input);
+        Article::create(Request::all());
 
         return redirect('article');
     }
