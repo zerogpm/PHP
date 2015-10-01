@@ -6,7 +6,7 @@ use App\Article;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
-use Request;
+use App\Http\Requests\CreateArticleRequest as CreateArticleRequest;
 
 class ArticlesController extends Controller
 {
@@ -41,7 +41,8 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
 
-    public function store() {
+    public function store(CreateArticleRequest $request) {
+
 
         //Request only one input values
         //$input = Request::get('title');
@@ -53,8 +54,11 @@ class ArticlesController extends Controller
         $article->body = $input['body'];
         **/
 
-        /** This is mass assignment */
-        Article::create(Request::all());
+        /** This is mass assignment but this has no validation*/
+        //Article::create(Request::all());
+
+        /** This has vaildation */
+        Article::create($request->all());
 
         return redirect('article');
     }
