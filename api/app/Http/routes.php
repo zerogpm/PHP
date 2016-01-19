@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'api/v1'], function() {
 
     Route::resource('lesson', 'LessonController');
+    Route::resource('User', 'UserController');
 
 });
 
