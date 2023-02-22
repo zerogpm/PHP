@@ -1,9 +1,6 @@
 name: Scan
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master:
   pull_request:
     type: [opened, synchronize, reponed]
 jobs:
