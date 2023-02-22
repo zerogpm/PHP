@@ -10,7 +10,7 @@ echo "Server Name : " . $_SERVER['SERVER_NAME'] . "<br/>";
 echo "Server Address : " . $_SERVER['SERVER_ADDR'] . "<br/>";
 echo "Server Port Number : " . $_SERVER['SERVER_PORT'] . "<br/>";
 echo "Document Root : " . $_SERVER['DOCUMENT_ROOT'] . "<br/>";
-echo "PHP File Location : " . $_SERVER['PHP_SELF'] . "<br/>";
+//echo "PHP File Location : " . $_SERVER['PHP_SELF'] . "<br/>";
 echo "Script Full Path : " . $_SERVER['SCRIPT_FILENAME'] . "<br/>";
 echo "Server Name : " . $_SERVER['SERVER_NAME'] . "<br/><br/>";
 
